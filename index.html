@@ -13,12 +13,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  
     <header>
-      <i class= "fa-regular fa-bookmark"><p id="fav-counter">0</p></i>
-      <i class="fa-brands fa-opencart"><p id="cart-counter">0</p></i>
+      <i class= "fa-regular fa-bookmark" onclick="openfavitems()"><p id="fav-counter">0</p></i>
+      <i class="fa-brands fa-opencart" onclick="opencart()"><p id="cart-counter">0</p></i>
     </header>
     <div id="fav_items">
-      
+    </div>
+    <div id="cart_items">
     </div>
     <div id="app">
         <!-- Fashion slider container -->

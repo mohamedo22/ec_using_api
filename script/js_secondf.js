@@ -1,8 +1,9 @@
 let fav_items = [];
 let cart = [];
+let fav_counter = document.getElementById("fav-counter");
 function add_to_fav(el)
 { 
-    let fav_counter = document.getElementById("fav-counter");
+    
     if(el.checked)
     {
         let container = el.parentElement;
@@ -16,23 +17,7 @@ function add_to_fav(el)
             "img":img,
             "title":title
         });
-        let fav_d = document.getElementById("fav_items");
-        fav_d.innerHTML ="";
-        for(let i=0;i<fav_items.length;i++)
-        {
-            fav_d.innerHTML += `
-                <div class="fav_product">
-                <img src="${fav_items[i].img}" alt="" class="fav-product-img">
-                <div class="main-text-co">
-                <div class="text-co">
-                    <p class="title">${fav_items[i].title}</p>
-                    <p class="price">$${fav_items[i].price}</p>
-                </div>
-                <button class="delete" onclick="deletefromfav()"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                </div>
-            `
-        }
+        reload_fav();
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -53,28 +38,14 @@ function add_to_fav(el)
         fav_items = fav_items.filter(item => item.id !== el.parentElement.getAttribute("id"));
         let fav_d = document.getElementById("fav_items");
         fav_d.innerHTML ="";
-        for(let i=0;i<fav_items.length;i++)
-        {
-            fav_d.innerHTML += 
-            `
-                <div class="fav_product">
-                <img src="${fav_items[i].img}" alt="" class="fav-product-img">
-                <div class="main-text-co">
-                <div class="text-co">
-                    <p class="title">${fav_items[i].title}</p>
-                    <p class="price">$${fav_items[i].price}</p>
-                </div>
-                <button class="delete" onclick="deletefromfav()"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                </div>
-            `
-        }
+        reload_fav()
     }
-    fav_counter.innerText = fav_items.length;
+    
 }
+let cart_counter = document.getElementById("cart-counter");
 function addToCart(el)
 {
-    let cart_counter = document.getElementById("cart-counter");
+    
     let check = cart.find(item => item.id === el.parentElement.getAttribute("id"));
     if(!check)
     {
@@ -90,6 +61,7 @@ function addToCart(el)
             "img":img,
             "title":title
         });
+        reload_cart()
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -109,5 +81,94 @@ function addToCart(el)
     }
     else {
         check.amount += 1;
+        check.price  *= check.amount ;
+        let cart_items = document.getElementById("cart_items");
+        cart_items.innerHTML ="";
+        reload_cart();
     }
+}
+function openfavitems()
+{
+    let fav_d = document.getElementById("fav_items");
+    fav_d.style.right == "-30rem" ? fav_d.style.right = "0rem" : fav_d.style.right = "-30rem";
+}
+function opencart()
+{
+    let cart_items = document.getElementById("cart_items");
+    cart_items.style.right == "-30rem" ? cart_items.style.right = "0rem" : cart_items.style.right = "-30rem";
+}
+function decrease(el)
+{
+    let item = cart.find(item => item.id === el.parentElement.getAttribute("id"));
+    if(item.amount > 1)
+    {
+        item.amount -= 1;
+        item.price  /= item.amount+1;
+    }
+    reload_cart();
+}
+function increase(el)
+{
+    let item = cart.find(item => item.id === el.parentElement.getAttribute("id"));
+    item.amount += 1;
+    item.price  *= item.amount ;
+    reload_cart();
+}
+function deletefromcart(el)
+{
+    cart = cart.filter(item => item.id !== el.getAttribute("id"));
+    reload_cart();
+}
+function reload_fav()
+{
+        let fav_d = document.getElementById("fav_items");
+        fav_d.innerHTML ="";
+        for(let i=0;i<fav_items.length;i++)
+        {
+            fav_d.innerHTML += `
+                <div class="fav_product">
+                <img src="${fav_items[i].img}" alt="" class="fav-product-img">
+                <div class="main-text-co">
+                <div class="text-co">
+                    <p class="title">${fav_items[i].title}</p>
+                    <p class="price">$${fav_items[i].price}</p>
+                </div>
+                <button id="${fav_items[i].id}" class="delete" onclick="deletefromfav(this)"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                </div>
+            `
+        }
+        fav_counter.innerText = fav_items.length;
+}
+function reload_cart()
+{
+    let cart_items = document.getElementById("cart_items");
+    cart_items.innerHTML = "" ;
+    for(let i=0;i < cart.length;i++)
+    {
+        cart_items.innerHTML += 
+        `
+            <div class="fav_product">
+            <img src="${cart[i].img}" alt="" class="fav-product-img">
+            <div class="main-text-co">
+            <div class="text-co">
+                <p class="title">${cart[i].title}</p>
+                <p class="price">$${cart[i].price}</p>
+            </div>
+            <div id="${cart[i].id}" class="amount">
+                <button onclick="decrease(this)"><i class="fa-solid fa-minus"></i></button>
+                <p>${cart[i].amount}</p>
+                <button onclick="increase(this)"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <button id="${cart[i].id}" class="delete" onclick="deletefromcart(this)"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            </div>
+        `
+    }
+    cart_counter.innerText = cart.length;
+}
+function deletefromfav(el)
+{
+    fav_items = fav_items.filter(item => item.id !== el.getAttribute("id"));
+    reload_fav();
 }
