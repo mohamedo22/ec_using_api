@@ -46,7 +46,7 @@ i > p
   top: -.5rem;
   left: -1rem;
   border-radius: 100%;
-  background-color: red;
+  background-color: white;
   color: black;
   font-size: .5rem;
   padding: .3rem;
@@ -72,10 +72,11 @@ i > p
 {
   display: flex;
   width: 100%;
-  background-color: #9c59b685;
+  background-color: transparent;
   border-radius: 10px;
   gap: 20px;
   padding: .5rem 1rem;
+  border: 1px dashed #9B59B6;
 }
 
 .fav-product-img
@@ -195,7 +196,7 @@ i > p
     100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
   transform: translate(calc((1 - cos(45deg))*100%), -100%) rotate(45deg);
   transform-origin: 0% 100%;
-  background-color: #BD1550;
+  background-color: red;
 }
 #products-co
 {
@@ -422,3 +423,60 @@ i > p
       transform: scale(1.5, 2.05);  
     }
   }
+  #container {
+    position: fixed;
+    top: 13rem;
+    opacity: 0;
+    z-index: -1;
+    left: 40%;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: 800ms all;
+}
+#container h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: black;
+}
+#container input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+#container .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+    color: rgb(111, 108, 108);
+}
+#container button {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#container button:hover {
+    background-color: #0056b3;
+}
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+.exit
+{
+  color: rgb(215, 40, 40);
+  margin-left: 90%;
+}

@@ -20,7 +20,7 @@ function add_to_fav(el)
         reload_fav();
         const Toast = Swal.mixin({
             toast: true,
-            position: "top-end",
+            position: "top",
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
@@ -64,10 +64,11 @@ function addToCart(el)
         reload_cart()
         const Toast = Swal.mixin({
             toast: true,
-            position: "top-end",
+            position: "top",
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
+            
             didOpen: (toast) => {
               toast.onmouseenter = Swal.stopTimer;
               toast.onmouseleave = Swal.resumeTimer;
@@ -171,4 +172,18 @@ function deletefromfav(el)
 {
     fav_items = fav_items.filter(item => item.id !== el.getAttribute("id"));
     reload_fav();
+}
+function openpaywindow()
+{
+    let pay_window = document.getElementById("container");
+    pay_window.style.zIndex = "9999";
+    pay_window.style.opacity = "1";
+    pay_window.style.top = "4rem";
+}
+function closepaywindow()
+{
+    let pay_window = document.getElementById("container");
+    pay_window.style.zIndex = "";
+    pay_window.style.opacity = "";
+    pay_window.style.top = "";
 }
