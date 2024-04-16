@@ -1,6 +1,7 @@
 let fav_items = [];
 let cart = [];
 let fav_counter = document.getElementById("fav-counter");
+
 function add_to_fav(el)
 { 
     
@@ -132,7 +133,7 @@ function reload_fav()
                 <div class="main-text-co">
                 <div class="text-co">
                     <p class="title">${fav_items[i].title}</p>
-                    <p class="price">$${fav_items[i].price}</p>
+                    <p class="price-cafav" style = "color: white;">$${fav_items[i].price}</p>
                 </div>
                 <button id="${fav_items[i].id}" class="delete" onclick="deletefromfav(this)"><i class="fa-solid fa-trash"></i></button>
                 </div>
@@ -154,7 +155,7 @@ function reload_cart()
             <div class="main-text-co">
             <div class="text-co">
                 <p class="title">${cart[i].title}</p>
-                <p class="price">$${cart[i].price}</p>
+                <p class="price-cafav" style="color:white;">$${cart[i].price}</p>
             </div>
             <div id="${cart[i].id}" class="amount">
                 <button onclick="decrease(this)"><i class="fa-solid fa-minus"></i></button>

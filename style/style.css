@@ -29,6 +29,17 @@ header
   display: flex;
   gap: 40px;
 }
+::-webkit-scrollbar
+{
+  width: 2px;
+
+}
+::-webkit-scrollbar-thumb
+{
+  background-color: black;
+  width: 2px;
+  border-radius: 8px;
+}
 i
 {
   cursor: pointer;
@@ -67,16 +78,18 @@ i > p
   gap: .5rem;
   padding: .5rem 1rem;
   transition: all 800ms;
+  overflow-y: scroll;
 }
 .fav_product
 {
   display: flex;
   width: 100%;
   background-color: transparent;
-  border-radius: 10px;
   gap: 20px;
   padding: .5rem 1rem;
-  border: 1px dashed #9B59B6;
+  border-bottom: 1px solid black;
+  height: fit-content;
+  padding-bottom: 2rem;
 }
 
 .fav-product-img
@@ -120,17 +133,17 @@ i > p
 {
   font-size: .8rem;
 }
-.price
+.price-cafav
 {
-  border-radius: 8px;
   padding: .2rem;
-  background-color: white;
+  background-color: rgb(105, 97, 97);
+  
 }
 .delete
 {
   padding: .3rem 1rem;
   width: fit-content;
-  background-color: red;
+  background-color: black;
   border-radius: 8px;
   cursor: pointer;
   outline: none;
@@ -140,6 +153,7 @@ i > p
 .delete > i
 {
   font-size: .8rem;
+  color: white;
 }
 #cart_items
 {
@@ -157,6 +171,7 @@ i > p
   gap: .5rem;
   padding: .5rem 1rem;
   transition: all 800ms;
+  overflow-y: scroll;
 }
 .amount
 {
@@ -166,15 +181,18 @@ i > p
 .amount > button
 {
   padding: .3rem;
-  outline: none;
-  border: 1px dotted #9B59B6;
+  outline: 1px dashed black;
   border-radius: 100%;
-  background-color: transparent;
+  background-color: black;
 }
 .amount > button > i
 {
-  color: black;
+  color: white;
   font-size: .8rem;
+}
+.amount p
+{
+  color: black;
 }
 .ribbon {
   font-size: 1rem;
