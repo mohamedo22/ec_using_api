@@ -65,8 +65,7 @@ i > p
 #fav_items
 {
   height: 92vh;
-  width: 30vw;
-  width: fit-content;
+  width: 21rem;
   border-radius: 10px;
   position: fixed;
   right: -30rem;
@@ -101,15 +100,13 @@ i > p
 .main-text-co
 {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 .text-co
 {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  justify-content: center;
-  align-items: center;
+  font-weight: bold;
 }
 .text-co >p
 {
@@ -136,30 +133,34 @@ i > p
 .price-cafav
 {
   padding: .2rem;
-  background-color: rgb(105, 97, 97);
-  
+  background-color: black;
+  width: fit-content;
 }
 .delete
 {
   padding: .3rem 1rem;
   width: fit-content;
-  background-color: black;
+  background-color: transparent;
   border-radius: 8px;
   cursor: pointer;
   outline: none;
   border:none;
-  margin: auto;
+  margin-left: 1rem;
+
 }
 .delete > i
 {
   font-size: .8rem;
-  color: white;
+  color: black;
+}
+.delete:hover > i
+{
+  color: red;
 }
 #cart_items
 {
   height: 92vh;
-  width: 30vw;
-  width: fit-content;
+  width: 25rem;
   border-radius: 10px;
   position: fixed;
   right: -30rem;
@@ -177,9 +178,13 @@ i > p
 {
   display: flex;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 .amount > button
 {
+  width: fit-content;
+  height: fit-content;
   padding: .3rem;
   outline: 1px dashed black;
   border-radius: 100%;
